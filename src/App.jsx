@@ -10,11 +10,15 @@ import './styles.css';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    const sections = ['hero', 'about', 'services', 'vision', 'contact'];
+
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'services', 'vision', 'contact'];
-      const scrollPosition = window.scrollY + 120;
+      setScrolled(window.scrollY > 60);
+
+      const scrollPosition = window.scrollY + 140;
       let current = 'hero';
 
       sections.forEach((section) => {
@@ -28,14 +32,33 @@ function App() {
       setActiveSection(current);
     };
 
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-right, .reveal-left');
+    revealElements.forEach((el) => observer.observe(el));
+
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <div className="app">
-      <Navbar activeSection={activeSection} />
+      <Navbar activeSection={activeSection} scrolled={scrolled} />
       <main>
         <Hero />
         <About />

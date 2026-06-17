@@ -293,13 +293,6 @@ img { max-width: 100%; display: block; }
 }
 
 .logo-letter:first-child {
-  left: 0;
-  bottom: 0;
-  z-index: 2;
-  background: linear-gradient(135deg, var(--secondary), var(--primary));
-}
-
-.logo-letter:last-child {
   right: 0;
   top: 0;
   z-index: 1;
@@ -307,12 +300,19 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 4px 20px rgba(110, 97, 222, 0.5);
 }
 
+.logo-letter:last-child {
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+}
+
 .logo-icon:hover .logo-letter:first-child {
-  transform: translateY(-2px);
+  transform: translateX(-2px);
 }
 
 .logo-icon:hover .logo-letter:last-child {
-  transform: translateX(2px);
+  transform: translateY(-2px);
 }
 
 .hero-title {
