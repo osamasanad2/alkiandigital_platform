@@ -265,25 +265,54 @@ img { max-width: 100%; display: block; }
 }
 
 .logo-icon {
-  display: inline-flex;
-  gap: 2px;
-  margin-left: 12px;
-  vertical-align: middle;
-}
-
-.logo-letter {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  margin-left: 16px;
+  vertical-align: middle;
+  width: 72px;
+  height: 64px;
+}
+
+.logo-letter {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
   background: var(--gradient);
   color: white;
   font-family: var(--font-english);
-  font-weight: 700;
-  font-size: 1.4rem;
-  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.6rem;
+  border-radius: 14px;
   box-shadow: 0 4px 16px rgba(110, 97, 222, 0.35);
+  transition: var(--transition);
+}
+
+.logo-letter:first-child {
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+}
+
+.logo-letter:last-child {
+  right: 0;
+  top: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, var(--primary), #8B7FEE);
+  box-shadow: 0 4px 20px rgba(110, 97, 222, 0.5);
+}
+
+.logo-icon:hover .logo-letter:first-child {
+  transform: translateY(-2px);
+}
+
+.logo-icon:hover .logo-letter:last-child {
+  transform: translateX(2px);
 }
 
 .hero-title {
@@ -1269,10 +1298,16 @@ img { max-width: 100%; display: block; }
     font-size: 1.6rem;
   }
 
+  .logo-icon {
+    width: 56px;
+    height: 48px;
+  }
+
   .logo-letter {
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    border-radius: 10px;
   }
 
   .hero-actions {
