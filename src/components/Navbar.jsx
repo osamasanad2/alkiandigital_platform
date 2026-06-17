@@ -40,6 +40,7 @@ function Navbar() {
     <header className={'navbar' + (scrolled ? ' scrolled' : '')}>
       <div className="container nav-container">
         <a href="#hero" className="nav-logo" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>
+          <img src="/logo.png" alt="الكيان ديجيتال" className="nav-logo-img" />
           <div className="nav-logo-text">
             <span className="logo-text">الكيان ديجيتال</span>
             <span className="logo-sub">AlKian Digital</span>

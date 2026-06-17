@@ -4,8 +4,11 @@ function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <span className="logo-text">الكيان ديجيتال</span>
-            <span className="logo-sub">AlKian Digital</span>
+            <img src="/logo.png" alt="الكيان ديجيتال" className="footer-logo-img" />
+            <div>
+              <span className="logo-text">الكيان ديجيتال</span>
+              <span className="logo-sub">AlKian Digital</span>
+            </div>
             <p>حيث يلتقي الكود بالإبداع — نحوّل الأفكار إلى واقع رقمي.</p>
           </div>
           <div className="footer-links">
