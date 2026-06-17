@@ -1,37 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Services from './components/Services.jsx';
 import Vision from './components/Vision.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
-import Navbar from './components/Navbar.jsx';
+import WhatsAppFloat from './components/WhatsAppFloat.jsx';
+import Chatbot from './components/Chatbot.jsx';
 import './styles.css';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('hero');
-  const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
-    const sections = ['hero', 'about', 'services', 'vision', 'contact'];
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
-
-      const scrollPosition = window.scrollY + 140;
-      let current = 'hero';
-
-      sections.forEach((section) => {
-        const el = document.getElementById(section);
-        if (!el) return;
-        if (el.offsetTop <= scrollPosition) {
-          current = section;
-        }
-      });
-
-      setActiveSection(current);
-    };
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -44,21 +24,22 @@ function App() {
       { threshold: 0.15 }
     );
 
-    const revealElements = document.querySelectorAll('.reveal-up, .reveal-right, .reveal-left');
-    revealElements.forEach((el) => observer.observe(el));
+    const reveals = document.querySelectorAll('.reveal-up, .reveal-right, .reveal-left');
+    reveals.forEach((el) => observer.observe(el));
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
+    // Re-run after a short delay to catch any late-mounted elements
+    setTimeout(() => {
+      document.querySelectorAll('.reveal-up, .reveal-right, .reveal-left').forEach((el) => {
+        if (!el.classList.contains('visible')) observer.observe(el);
+      });
+    }, 300);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div className="app">
-      <Navbar activeSection={activeSection} scrolled={scrolled} />
+      <Navbar />
       <main>
         <Hero />
         <About />
@@ -67,6 +48,8 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppFloat />
+      <Chatbot />
     </div>
   );
 }
