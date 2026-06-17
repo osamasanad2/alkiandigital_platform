@@ -265,54 +265,38 @@ img { max-width: 100%; display: block; }
 }
 
 .logo-icon {
-  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  margin-left: 16px;
+  gap: 4px;
+  margin-left: 14px;
   vertical-align: middle;
-  width: 72px;
-  height: 64px;
 }
 
 .logo-letter {
-  position: absolute;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
-  background: var(--gradient);
+  width: 48px;
+  height: 48px;
   color: white;
   font-family: var(--font-english);
   font-weight: 800;
-  font-size: 1.6rem;
-  border-radius: 14px;
+  font-size: 1.5rem;
+  border-radius: 12px;
   box-shadow: 0 4px 16px rgba(110, 97, 222, 0.35);
   transition: var(--transition);
 }
 
 .logo-letter:first-child {
-  right: 0;
-  top: 0;
-  z-index: 1;
   background: linear-gradient(135deg, var(--primary), #8B7FEE);
-  box-shadow: 0 4px 20px rgba(110, 97, 222, 0.5);
 }
 
 .logo-letter:last-child {
-  left: 0;
-  bottom: 0;
-  z-index: 2;
   background: linear-gradient(135deg, var(--secondary), var(--primary));
 }
 
-.logo-icon:hover .logo-letter:first-child {
-  transform: translateX(-2px);
-}
-
-.logo-icon:hover .logo-letter:last-child {
-  transform: translateY(-2px);
+.logo-icon:hover .logo-letter {
+  transform: translateY(-3px);
 }
 
 .hero-title {
@@ -1298,16 +1282,10 @@ img { max-width: 100%; display: block; }
     font-size: 1.6rem;
   }
 
-  .logo-icon {
-    width: 56px;
-    height: 48px;
-  }
-
   .logo-letter {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-    border-radius: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 
   .hero-actions {
